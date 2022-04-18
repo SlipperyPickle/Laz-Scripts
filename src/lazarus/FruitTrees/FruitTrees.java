@@ -1,7 +1,8 @@
-package lazarus.MahoganyHomes;
+package lazarus.FruitTrees;
 
 import lazarus.Framework.Branch;
 import lazarus.Framework.Leaf;
+import lazarus.MahoganyHomes.Configs;
 import org.powbot.api.rt4.walking.model.Skill;
 import org.powbot.api.script.AbstractScript;
 import org.powbot.api.script.OptionType;
@@ -15,29 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ScriptManifest(
-        name = "Lazarus Mohagony Homes",
-        description = "Completes mohagony homes",
+        name = "Lazarus Fruit Trees",
+        description = "Completes a fruit tree run",
         version = "0.0.1"
 )
-@ScriptConfiguration.List(
-        {
-                @ScriptConfiguration(
-                        name = "Select tier",
-                        description = "What tier homes would you like to complete",
-                        defaultValue = "Expert(70)",
-                        allowedValues = {"Beginner", "Novice(20)", "Adept(50)", "Expert(70)"},
-                        optionType = OptionType.STRING
-                ),
-                @ScriptConfiguration(
-                        name = "Use NPC Contact?",
-                        description = "Enable this to use NPC Contact",
-                        optionType = OptionType.BOOLEAN,
-                        defaultValue = "true"
-                )
-        }
-)
 
-public class MohagonyHomes extends AbstractScript {
+public class FruitTrees extends AbstractScript {
 
     public List<Branch> branches = new ArrayList<>();
     String leafStatus = "none";
@@ -45,7 +29,7 @@ public class MohagonyHomes extends AbstractScript {
 
     public static void main(String[] args) {
         new ScriptUploader().uploadAndStart(
-                "Mohagony Homes",
+                "Fruit Trees",
                 "Lazarus",
                 "127.0.0.1:5555",
                 true,
@@ -55,7 +39,7 @@ public class MohagonyHomes extends AbstractScript {
     @Override
     public void onStart() {
         Paint p = new PaintBuilder()
-                .trackSkill(Skill.Construction)
+                .trackSkill(Skill.Farming)
                 .addString(() -> "Last leaf: ", () -> leafStatus)
                 .addString(() -> "Current Contract: ", () -> Configs.CurrentContract)
                 .x(30)
